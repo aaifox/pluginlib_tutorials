@@ -115,7 +115,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -123,11 +123,14 @@ include_directories(
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/pluginlib_tutorials_.cpp
 # )
+add_library(polygon_plugins src/polygon_plugins.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(polygon_loader src/polygon_loader.cpp)
+
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
@@ -148,6 +151,7 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+target_link_libraries(polygon_loader ${catkin_LIBRARIES})
 
 #############
 ## Install ##

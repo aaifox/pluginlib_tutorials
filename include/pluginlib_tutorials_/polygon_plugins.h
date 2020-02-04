@@ -18,7 +18,7 @@ namespace polygon_plugins
       
       double getHeight()
       {
-        return sqrt(3) * side_height_/2;
+        return sqrt(3) * side_length_/2;
       }
       
       double area()
@@ -27,7 +27,7 @@ namespace polygon_plugins
       }
       
     private:
-      double side_height_;
+      double side_length_;
   };
   
   class Square : public polygon_base::RegularPolygon
@@ -37,16 +37,16 @@ namespace polygon_plugins
       
       void initialize(double side_length)
       {
-        side_lenght_ = side_lenght;
+        side_length_ = side_length;
       }
       
       double area()
       {
-        return side_lenght_ * side_lenght_;
+        return side_length_ * side_length_;
       }
       
     private:
-      double side_lenght_;
+      double side_length_;
   };
   
 };
