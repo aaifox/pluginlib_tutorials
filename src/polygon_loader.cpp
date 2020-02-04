@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     triangle->initialize(10.0);
 
     boost::shared_ptr<polygon_base::RegularPolygon> square = poly_loader.createInstance("polygon_plugins::Square");
-    square->initialize(10.0);
+    square->initialize(12.0);
 
     ROS_INFO("Triangle area: %.2f", triangle->area());
     ROS_INFO("Square area: %.2f", square->area());
