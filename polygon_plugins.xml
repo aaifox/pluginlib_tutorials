@@ -1,14 +1,8 @@
-<library path="lib/libpolygon_plugins"> #The library tag gives the relative path to a library that contains the plugins that we want to export
+<library path="lib/libpolygon_plugins">
   <class type="polygon_plugins::Triangle" base_class_type="polygon_base::RegularPolygon">
-    <description>This is a traingle plugin.</description>
+    <description>This is a triangle plugin.</description>
   </class>
   <class type="polygon_plugins::Square" base_class_type="polygon_base::RegularPolygon">
     <description>This is a square plugin.</description>
   </class>
-</libraty>
-
-# The class tag declares a plugin that we want to export from our library
-# -type: The fully qualified type of the plugin.
-# -base_class: The fully qualified base class type for the plugin.
-# -description: A description of the plugin and what it does.
-# -name (not used in the example above): This refers to the name of the plugin that we're exported given as plugin_namespace/PluginName. Since we used the package name as the namespace for our regular_triangle plugin... this results in us using pluginlib_tutorials_/regular_triangle. After the API change, this attribute is no longer required. 
+</library>
