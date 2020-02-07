@@ -23,7 +23,7 @@ version fuerte_and_older
 $ roscreate-pkg pluginlib_tutorials_ roscpp pluginlib
 ```
   
-##Create a Base Class ===
+## Create a Base Class
 Ok, now we'll create a base class from which all of our plugins will inherit. For this example, we'll be creating a couple of `RegularPolygon` objects and using them, so we need to create the `RegularPolygon` class. Open your favorite editor, edit `catkin_ws/src/pluginlib_tutorials_/include/pluginlib_tutorials_/polygon_base.h`, and paste the following inside of it:
 
 ```
@@ -47,10 +47,10 @@ namespace polygon_base
 ```
 This code above should be pretty self explanatory... we're creating an abstract class called `RegularPolygon`. One thing to notice is the presence of the `initialize` method. With [[pluginlib]], a constructor without parameters is required for classes so, if any parameters are required, we use the `initialize` method to initialize the object.
 
-##Create the Plugins ===
+## Create the Plugins
 For this example, we'll create two `RegularPolygon` plugins, the first will be a `Triangle` and the second a `Square`. Open up `include/pluginlib_tutorials_/polygon_plugins.h` and paste the following into it:
 
-```    
+```
 #ifndef PLUGINLIB_TUTORIALS__POLYGON_PLUGINS_H_
 #define PLUGINLIB_TUTORIALS__POLYGON_PLUGINS_H_
 #include <pluginlib_tutorials_/polygon_base.h>
@@ -106,7 +106,7 @@ namespace polygon_plugins
 ```
 This code should also be pretty clear. We've created two classes that inherit from `RegularPolygon` that we'll use as our plugins.
 
-##Registering the Plugins ===
+## Registering the Plugins
 So far, we've just created some standard C++ classes. Now, we'll start to do the [[pluginlib]] specific work as we declare our `Triangle` and `Square` classes as plugins. Open up `src/polygon_plugins.cpp` and paste the following into it:
 
 version groovy_and_newer
@@ -155,7 +155,7 @@ Here, we register the `Triangle` class as a plugin. Let's go through the argumen
  * 3: The fully-qualified type of the plugin class, in this case, `polygon_plugins::Triangle`.
  * 4: The fully-qualified type of the base class, in this case, `polygon_base::RegularPolygon`.
   
-##Building the Plugin Library ===
+## Building the Plugin Library
 To actually build the library, add the following lines to your `CMakeLists.txt` file:
 
 version groovy_and_newer
@@ -171,10 +171,10 @@ rosbuild_add_library(polygon_plugins src/polygon_plugins.cpp)
 ```
 You should then be able to compile the code you've written so far by running `rosmake`.
   
-##Making the Plugins Available to the ROS Toolchain ===
+## Making the Plugins Available to the ROS Toolchain
 The steps above make it so that instances of our plugins can be created once the library they exist in is loaded, but the plugin loader still needs a way to find that library and to know what to reference within that library. To this end, we'll also create an XML file that, along with a special export line in the package manifest, makes all the necessary information about our plugins available to the ROS toolchain.
 
-=##The Plugin XML File ====
+## The Plugin XML File
 Open up an editor and paste the following into `polygon_plugins.xml`, which should be in the top level of the package (along with CMakeLists.txt and package.xml):
 
 version fuerte_and_older
@@ -225,7 +225,7 @@ The `class` tag declares a plugin that we want to export from our library. Let's
  * `description`: A description of the plugin and what it does.
  * `name` (not used in the example above): This refers to the name of the plugin that we're exported given as `plugin_namespace/PluginName`. Since we used the package name as the namespace for our `regular_triangle` plugin... this results in us using `pluginlib_tutorials_/regular_triangle`. After [[pluginlib#pluginlib.2BAC8-pluginlib_groovy.pluginlib_Legacy_.22Lookup_Name.22|the API change]], this attribute is no longer required.
   
-=##Exporting Plugins ====
+## Exporting Plugins
 To export the plugins that we created, we'll have to add the following lines to our either `manifest.xml` with `rosbuild` pkg or `package.xml` with `catkin` package:
 
 ```
@@ -242,10 +242,10 @@ rospack plugins --attrib=plugin pluginlib_tutorials_
 ```
 You should see output giving the full path to the `polygon_plugins.xml` file. This means that the ROS toolchain is setup properly to work with your plugin.
 
-##Using a Plugin ===
+## Using a Plugin
 Now that we've successfully created and exported some `RegularPolygon` plugins, let's use them. Open up `src/polygon_loader.cpp` and paste the following into it:
 
-```#!cplusplus block=loader
+```
 #include <pluginlib/class_loader.h>
 #include <pluginlib_tutorials_/polygon_base.h>
 
@@ -282,7 +282,7 @@ Let's look at a few of the key lines:
 
 <<CodeRef(loader, 19, 22)>> Here, we check if something goes wrong when loading our plugins so that we can give useful feedback to the user.
 
-##Running the Code ===
+## Running the Code
 To run the code we just wrote, we'll add the following line to our `CMakeLists.txt` file:
 
 version fuerte_and_older
@@ -309,8 +309,4 @@ You should get output similar to that shown below:
 [ INFO] [WallTime: 1279658450.869138007]: Square area: 100.00
 ```
 Congratulations! You've just written and used your first plugins.
-
-## AUTOGENERATED DO NOT DELETE
-## TutorialCategory
-## FILL IN THE STACK TUTORIAL CATEGORY HERE
 
