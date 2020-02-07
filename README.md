@@ -112,7 +112,6 @@ So far, we've just created some standard C++ classes. Now, we'll start to do the
 version groovy_and_newer
 
 ```
-#!cplusplus block=declare
 #include <pluginlib/class_list_macros.h>
 #include <pluginlib_tutorials_/polygon_base.h>
 #include <pluginlib_tutorials_/polygon_plugins.h>
@@ -134,7 +133,6 @@ Here, we register the `Triangle` class as a plugin. Let's go through the argumen
 version fuerte_and_older
 
 ```
-#!cplusplus block=declare
 #include <pluginlib/class_list_macros.h>
 #include <pluginlib_tutorials_/polygon_base.h>
 #include <pluginlib_tutorials_/polygon_plugins.h>
@@ -179,7 +177,6 @@ Open up an editor and paste the following into `polygon_plugins.xml`, which shou
 
 version fuerte_and_older
 ```
-#!xml block=plugin_xml
 <library path="lib/libpolygon_plugins">
   <class name="pluginlib_tutorials_/regular_triangle" type="polygon_plugins::Triangle" base_class_type="polygon_base::RegularPolygon">
     <description>This is a triangle plugin.</description>
